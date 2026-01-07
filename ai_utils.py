@@ -9,7 +9,7 @@ def get_model(api_key):
     except Exception as e:
         return None
 
-def generate_ai_response(api_key, user_query, database_context):
+def generate_ai_response(api_key, user_query, database_context, user_profile=None):
     if not api_key:
         return "Please enter a Gemini API Key in the settings to use the AI features."
     
@@ -17,15 +17,31 @@ def generate_ai_response(api_key, user_query, database_context):
     if not model:
         return "Error configuring AI model. Check your API Key."
 
+    # Construct Profile ContextStr
+    profile_context = "User Profile: Unknown"
+    if user_profile:
+        profile_context = f"""
+        USER PROFILE:
+        Name: {user_profile.get('name', 'Unknown')}
+        Age: {user_profile.get('age', 'Unknown')}
+        Gender: {user_profile.get('gender', 'Unknown')}
+        Dating Goals: {user_profile.get('dating_goals', 'Not specified')}
+        Interests: {user_profile.get('interests', 'Not specified')}
+        """
+
     system_prompt = f"""
     You are a helpful and empathetic implementation of a personal date logging assistant.
+    You are speaking to the user described below. Tailor your advice to their goals and personality.
+    
+    {profile_context}
+    
     Use the following logs of the user's past dates to answer their question. 
     Analyze patterns, preferences, and specific details from the logs.
     
     USER DATA LOGS:
     {database_context}
     
-    Be concise but insightful. If the answer isn't in the logs, say so.
+    Be concise, friendly, and insightful. 
     """
     
     try:
