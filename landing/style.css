@@ -1,0 +1,126 @@
+:root {
+    --primary: #d494ff;
+    /* Lavender Pink */
+    --secondary: #6366f1;
+    /* Indigo */
+    --bg: #050510;
+    --text: #ffffff;
+    --text-muted: #a0a0c0;
+    --glass: rgba(255, 255, 255, 0.05);
+    --border: rgba(212, 148, 255, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: var(--bg);
+    background-image: radial-gradient(circle at top right, #1a1a3a 0%, transparent 50%),
+        radial-gradient(circle at bottom left, #2a1a2a 0%, transparent 50%);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.hero-image {
+    max-width: 800px;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 40px;
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    box-shadow: 0 0 80px rgba(212, 148, 255, 0.15);
+}
+
+h1 {
+    font-size: 5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #fff 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 20px rgba(212, 148, 255, 0.3));
+}
+
+p.subtitle {
+    font-size: 1.4rem;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin-bottom: 3rem;
+}
+
+.btn {
+    padding: 1rem 3rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(99, 102, 241, 0.6);
+}
+
+.features {
+    padding: 100px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    padding: 3rem;
+    border-radius: 30px;
+    text-align: left;
+}
+
+.card h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+footer {
+    padding: 60px 0;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3rem;
+    }
+}
